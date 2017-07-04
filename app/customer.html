@@ -1,0 +1,88 @@
+<table class="table table-bordered table-striped">
+    <tr>
+        <td>
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <td>
+                        Customer Id:
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" 
+                        [(ngModel)]="customer.CustId"/>
+                    </td>
+                </tr>
+                  <tr>
+                    <td>
+                        Customer Name:
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" 
+                        [(ngModel)]="customer.CustName"/>
+                    </td>
+                </tr>
+                  <tr>
+                    <td>
+                        Customer Address:
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" 
+                        [(ngModel)]="customer.Address"/>
+                    </td>
+                </tr>
+                  <tr>
+                    <td>
+                        Customer City:
+                    </td>
+                    <td>
+                        <!--<input type="text" class="form-control" 
+                        [(ngModel)]="customer.City"/>-->
+                        <!--<select class="form-control"
+                         [(ngModel)]='customer.City'>
+                          <option *ngFor='let c of cities' [value]=c.CityId>{{c.CityName}}</option>   
+                        </select>-->
+                        <select class="form-control"
+                         [(ngModel)]='customer.City'>
+                          <option *ngFor='let c of cities'>{{c}}</option>   
+                        </select>
+                    </td>
+                </tr>
+                  <tr>
+                    <td>
+                        <input type="button" value="New" 
+                        class="btn btn-default" 
+                        (click)="clear()"/>
+                    </td>
+                    <td>
+                        <input type="button" value="Save" 
+                        class="btn btn-success" 
+                        (click)="save()"/>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+    </tr>
+    <tr>
+        <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                  <td>Customer Id</td>
+                  <td>Customer Name</td>
+                  <td>Customer Address</td>
+                  <td>Customer City</td>
+              </tr>
+            </thead>
+            <tbody >
+                <tr *ngFor='let cust of customers'
+                 (click)="selctcustomer(cust)">
+                    <td>{{cust.CustId}}</td>    
+                    <td>{{cust.CustName}}</td>    
+                    <td>{{cust.Address}}</td>    
+                    <td>{{cust.City}}</td>    
+                </tr>
+            </tbody>
+        </table>
+    </tr>
+</table>

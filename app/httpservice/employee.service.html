@@ -1,0 +1,49 @@
+<table>
+    <tr>
+        <td>
+            <table>
+                <tr>
+                    <td>
+                        <input type="button" 
+                        value="Post" 
+                        (click)="addEmployee()">
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td>
+                            EmpNo
+                        </td>
+                        <td>
+                            EmpName
+                        </td>
+                        <td>
+                            Salary
+                        </td>
+                        <td>
+                            DeptName
+                        </td>
+                        <td>
+                            Designation
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let e of emps">
+                         <td>{{e.EmpNo}}</td>   
+                         <td>{{e.EmpName}}</td>   
+                         <td>{{e.Salary}}</td>   
+                         <td>{{e.DeptName}}</td>   
+                         <td>{{e.Designation}}</td>   
+                    </tr>    
+                </tbody>
+            </table>
+        </td>
+    </tr>
+</table>

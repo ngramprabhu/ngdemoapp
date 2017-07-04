@@ -1,0 +1,24 @@
+<form [formGroup]="frm" novalidate>
+    <table>
+        <tr>
+            <td>
+                Person Email:
+            </td>
+            <td>
+                <input type="text" [(ngModel)]="p.Email" 
+                formControlName="email" />
+            </td>
+            <div *ngIf="frm.controls.email.dirty && !frm.controls.email.valid" class="alert alert-danger">
+                <p *ngIf="!frm.controls.email.valid">
+                    Must be a Valid Email
+                </p>
+            </div>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Save" 
+                 [disabled]="!frm.valid"/>
+            </td>
+        </tr>
+    </table>
+</form>

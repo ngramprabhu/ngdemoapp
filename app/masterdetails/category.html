@@ -1,0 +1,17 @@
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <td>Category Id</td>
+            <td>Category Name</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let c of categories" 
+         (click)="selectedCategory(c)">
+             <td>{{c.catId}}</td>   
+             <td>{{c.catName}}</td>   
+        </tr>
+    </tbody>            
+</table>
+<hr>
+<prod-data [catName]='catName'></prod-data>

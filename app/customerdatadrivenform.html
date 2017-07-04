@@ -1,0 +1,138 @@
+<table class="table table-bordered table-striped">
+    <tr>
+        <td>
+            <h2>Data Driven Form</h2>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div [hidden]="isSubmitted">
+                <form (ngSubmit)="save()" 
+                [formGroup]="form" novalidate>
+                    <table class="table table-bordered table-striped">
+                        <tr>
+                            <td>
+                                Customer Id:
+                            </td>
+                            <td>
+                                <input type="text" 
+                                class="form-control" 
+                                [(ngModel)]="customer.CustId" 
+                                formControlName="custId" 
+                                required
+                                pattern="[0-9]+"/>
+                            </td>
+                            <div *ngIf="form.controls.custId.dirty && !form.controls.custId.valid"
+                             class="alert alert-danger">
+                                <p *ngIf="form.controls.custId.errors.required">
+                                    Customer Id is Must
+                                </p>
+                                 <p *ngIf="form.controls.custId.errors.pattern">
+                                    Customer Id must be number
+                                </p>
+                            </div>
+                        </tr>
+                        <tr>
+                            <td>
+                                Customer Name:
+                            </td>
+                            <td>
+                                <input type="text" 
+                                class="form-control"
+                                [(ngModel)]="customer.CustName" 
+                                formControlName="custName"
+                                 required 
+                                 minlength="2"
+                                 maxlength="15"
+                                 pattern="^[A-Za-z]+"/>
+                            </td>
+                               <div *ngIf="form.controls.custName.dirty && !form.controls.custName.valid"
+                             class="alert alert-danger">
+                                <p *ngIf="form.controls.custName.errors.required">
+                                    Customer Name is Must
+                                </p>
+                                 <p *ngIf="form.controls.custName.errors.minlength">
+                                    Customer Name must be min 2 chars in length
+                                </p>
+                                  <p *ngIf="form.controls.custName.errors.maxlength">
+                                    Customer Name must be max 15 chars in length
+                                </p>
+                                 <p *ngIf="form.controls.custName.errors.pattern">
+                                    Customer Id must be valid string
+                                </p>
+                            </div>
+                        </tr>
+                        <tr>
+                            <td>
+                                Customer Address:
+                            </td>
+                            <td>
+                                <input type="text" 
+                                class="form-control" 
+                                [(ngModel)]="customer.Address" 
+                                formControlName="address"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Customer City:
+                            </td>
+                            <td>
+                                <select class="form-control" 
+                                [(ngModel)]='customer.City'
+                                 formControlName="city">
+                          <option *ngFor='let c of cities'>{{c}}</option>   
+                        </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="button" value="New" class="btn btn-default" (click)="clear()" />
+                            </td>
+                            <td>
+                                <input type="submit" value="Save" 
+                                class="btn btn-success"  
+                                [disabled]="!form.valid"/>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+    </tr>
+    <tr>
+        <div [hidden]="!isSubmitted">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <td>Customer Id</td>
+                        <td>Customer Name</td>
+                        <td>Customer Address</td>
+                        <td>Customer City</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let cust of customers' (click)="selctcustomer(cust)">
+                        <td>{{cust.CustId}}</td>
+                        <td>{{cust.CustName}}</td>
+                        <td>{{cust.Address}}</td>
+                        <td>{{cust.City}}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                   <tr>
+                       <td>
+                           <input type="button" value="Ok" 
+                           class="btn btn-success"
+                            (click)="loadform()">
+                       </td>
+                   </tr>
+                </tfoot>
+            </table>
+        </div>
+    </tr>
+</table>
